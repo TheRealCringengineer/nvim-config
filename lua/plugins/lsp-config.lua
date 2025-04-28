@@ -6,7 +6,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "clangd", "cmake-language-server" },
+      ensure_installed = { "lua_ls", "clangd", "cmake" },
     },
   },
   {
