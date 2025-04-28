@@ -316,6 +316,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<Cr>", { desc = "Open NeoTree", silent = true })
+		vim.keymap.set("n", "<C-z>", ":Neotree filesystem toggle left<Cr>", { desc = "Open NeoTree", silent = true })
 	end,
 }
