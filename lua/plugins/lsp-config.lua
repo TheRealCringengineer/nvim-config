@@ -6,7 +6,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "clangd" },
+      ensure_installed = { "lua_ls", "clangd", "cmake-language-server" },
     },
   },
   {
@@ -52,6 +52,10 @@ return {
       })
       lspconfig.pyright.setup({
         capabilities = capabilities,
+      })
+      lspconfig.cmake.setup({
+        capabilities = capabilities,
+        cmd = { "cmake-language-server"},
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info"})
