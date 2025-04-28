@@ -8,5 +8,5 @@ return {
       vim.keymap.set("n", "<C-Down>", "<Plug>(VM-Add-Cursor-Down)", { desc = "Add cursor down" })
       vim.keymap.set("n", "<C-Up>", "<Plug>(VM-Add-Cursor-Up)", { desc = "Add cursor up" })
     end,
-  }
+  },
 }

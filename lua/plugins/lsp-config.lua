@@ -12,13 +12,11 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-
-     -- To update error/warnings in update
-      vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          update_in_insert = true,
-        }
-      )
+      -- To update error/warnings in update
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            update_in_insert = true,
+          })
 
       -- Set up lspconfig.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -55,10 +53,10 @@ return {
       })
       lspconfig.cmake.setup({
         capabilities = capabilities,
-        cmd = { "cmake-language-server"},
+        cmd = { "cmake-language-server" },
       })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info"})
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Go To Definition" })
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Go To Declaration" })
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Go To Implementation" })

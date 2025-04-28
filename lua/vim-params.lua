@@ -15,4 +15,4 @@ vim.opt.relativenumber = true
 vim.wo.number = true -- Or relativenumber
 
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close current buffer" })
-vim.keymap.set("", "<esc>", "<esc><cmd>noh<CR>", {noremap = true})
+vim.keymap.set("", "<esc>", "<esc><cmd>noh<CR>", { noremap = true })
