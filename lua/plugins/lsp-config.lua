@@ -20,8 +20,8 @@ return {
 
       -- Set up lspconfig.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
+      -- local lspconfig = require("lspconfig")
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -37,10 +37,12 @@ return {
           },
         },
       })
-      lspconfig.clangd.setup({
+      vim.lsp.enable("lua_ls")
+
+      vim.lsp.config("clangd", {
         capabilities = capabilities,
         offsetEncoding = { "utf-8" },
-        cmd = { "clangd", "--background-index" },
+        cmd = { "clangd", "--background-index", "-j", "24" },
         --fallbackFlags = {"-std=c++latest"}, -- Important! Not -std:c++latest
         textDocument = {
           completion = {
@@ -48,13 +50,23 @@ return {
           },
         },
       })
-      lspconfig.pyright.setup({
+      vim.lsp.enable("clangd")
+
+      vim.lsp.config("pyright", {
         capabilities = capabilities,
       })
-      lspconfig.cmake.setup({
+      vim.lsp.enable("pyright")
+
+      vim.lsp.config("cmake", {
         capabilities = capabilities,
         cmd = { "cmake-language-server" },
       })
+      vim.lsp.enable("cmake")
+
+      vim.lsp.config("superhtml", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("superhtml")
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Go To Definition" })
