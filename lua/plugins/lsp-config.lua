@@ -43,7 +43,7 @@ return {
         capabilities = capabilities,
         offsetEncoding = { "utf-8" },
         cmd = { "clangd", "--background-index", "-j", "24" },
-        --fallbackFlags = {"-std=c++latest"}, -- Important! Not -std:c++latest
+        fallbackFlags = {"-std=c++latest"}, -- Important! Not -std:c++latest
         textDocument = {
           completion = {
             editsNearCursor = true,

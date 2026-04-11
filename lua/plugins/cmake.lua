@@ -7,7 +7,7 @@ return {
       ctest_command = "ctest",                                                          -- this is used to specify ctest command path
       cmake_use_preset = true,
       cmake_regenerate_on_save = true,                                                  -- auto generate when save CMakeLists.txt
-      cmake_generate_options = { "-G", "Ninja", "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- this will be passed when invoke `CMakeGenerate`
+      cmake_generate_options = { "-G", "Ninja", "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1", "-D", "CMAKE_CXX_COMPIER=clang", "-D", "CMAKE_C_COMPILER=clang" }, -- this will be passed when invoke `CMakeGenerate`
       cmake_build_options = {},                                                         -- this will be passed when invoke `CMakeBuild`
       cmake_build_directory = "${variant:buildType}",
       cmake_build_directory_prefix = "",                                                -- when cmake_build_directory is "", this option will be activated

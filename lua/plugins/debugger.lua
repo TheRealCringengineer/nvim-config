@@ -51,7 +51,7 @@ return {
         executable = {
           -- CHANGE THIS to your path! For some reason on windows path is not working correctly
           -- command = "codelldb",
-          command = "codelldb",
+          command = "C:/Users/Hades/AppData/Local/nvim-data/mason/packages/codelldb/extension/adapter/codelldb.exe",
           args = { "--port", "33565" },
 
           -- On windows you may have to uncomment this:
