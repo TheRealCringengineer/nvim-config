@@ -16,5 +16,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-params")
+
 -- Setup lazy.nvim
-require("lazy").setup("plugins")
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
+
+-- Autostart treesitter
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'cpp', 'c', 'lua' },
+  callback = function() vim.treesitter.start() end,
+})

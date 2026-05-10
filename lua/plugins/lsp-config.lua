@@ -6,17 +6,19 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "clangd", "cmake" },
+      ensure_installed = {},
     },
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
       -- To update error/warnings in update
-      vim.lsp.handlers["textDocument/publishDiagnostics"] =
-          vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            update_in_insert = true,
-          })
+      -- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+      --     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      --       update_in_insert = true,
+      --     })
+
+      vim.lsp.log.set_level("ERROR")
 
       -- Set up lspconfig.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -43,7 +45,7 @@ return {
         capabilities = capabilities,
         offsetEncoding = { "utf-8" },
         cmd = { "clangd", "--background-index", "-j", "24" },
-        fallbackFlags = {"-std=c++latest"}, -- Important! Not -std:c++latest
+        fallbackFlags = { "-std=c++latest" }, -- Important! Not -std:c++latest
         textDocument = {
           completion = {
             editsNearCursor = true,
@@ -65,6 +67,7 @@ return {
 
       vim.lsp.config("superhtml", {
         capabilities = capabilities,
+        filetypes = { 'html' }, -- For some reason default filetypes are incorrect
       })
       vim.lsp.enable("superhtml")
 
@@ -77,6 +80,14 @@ return {
       vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, { desc = "LSP Rename" })
       vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "LSP Format" })
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+
+      -- Disables default lsp diagnostics (we are using tiny_inline)
+      vim.diagnostic.config({
+        update_in_insert = true,
+        virtual_text = false,
+      })
+      -- vim.lsp.diagnostics = { virtual_text = false }
+      -- vim.diagnostic.config({ update_in_insert = true, virtual_lines = { current_line = false }, virtual_text = false })
     end,
   },
 }

@@ -11,6 +11,10 @@ return {
   {
     "hrsh7th/nvim-cmp",
     config = function()
+
+      -- Shit shit fixes problem with missing borders
+      vim.o.winborder = "rounded" -- can be "rounded" "single" "shadow" "none"
+
       local cmp = require("cmp")
 
       cmp.setup({
