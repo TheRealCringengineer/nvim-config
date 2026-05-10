@@ -32,3 +32,6 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'cpp', 'c', 'lua' },
   callback = function() vim.treesitter.start() end,
 })
+
+
+vim.cmd("colorscheme cyberdream")
